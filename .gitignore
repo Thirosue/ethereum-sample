@@ -1,0 +1,8 @@
+.tern-port
+.DS_Store
+node_modules/
+*.log
+/build
+.truffle-solidity-loader
+private/
+.vscode/

@@ -8,16 +8,16 @@ class Transaction extends Component {
       <table>
         <thead>
           <tr>
-            <td>BlockHash</td>
             <td>BlockNumber</td>
-            <td>Gas</td>
+            <td>To</td>
+            <td>Token</td>
           </tr>
         </thead>
         <tbody>
           <tr key={this.props.transactions}>
-            <td>{this.props.transactions.blockHash}</td>
             <td>{this.props.transactions.blockNumber}</td>
-            <td>{this.props.transactions.gas}</td>
+            <td>{this.props.transactions.to}</td>
+            <td>{this.props.transactions.token}</td>
           </tr>
         </tbody>
       </table>

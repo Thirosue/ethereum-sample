@@ -29,8 +29,10 @@ class Send extends Component {
       if(this.state.transactions) {
         tran = this.state.transactions
       }
-
-      tran.push(txHash)
+      tran.push({
+        hash : txHash,
+        token : this.sendAmountInput.value
+      })
       this.setState({transactions: tran})
       sessionStorage.setItem('transactions', JSON.stringify(this.state.transactions))
 

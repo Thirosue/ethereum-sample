@@ -78,6 +78,7 @@ class AccountListContainer extends Component {
       <div>
         <h2>List of Balance</h2>
         <AccountList accounts={this.state.accounts} />
+        <h2>Send Transaction</h2>
         <Send sender={this.state.coinbase} />
       </div>
     )

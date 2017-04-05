@@ -16,20 +16,27 @@ class TransactionListContainer extends Component {
   }
 
   _getTransactions () {
-    if(sessionStorage.getItem('transactions')) {
-      var current = JSON.parse(sessionStorage.getItem('transactions')).slice(0,1)[0]
+    var tmp = new Array()
 
-      this.props.web3.eth.getTransaction(current.hash, function(err, tran) {
-        tran.token = current.token
-        this.setState({transactions: tran})
-        console.log(this.state.transactions)
-      }.bind(this))
+    if(sessionStorage.getItem('transactions')) {
+      var tlist = JSON.parse(sessionStorage.getItem('transactions'))
+      var current = tlist.slice(tlist.length-3, tlist.length)
+
+      current.forEach((item,index,ar) => {
+        this.props.web3.eth.getTransaction(item.hash, function(err, tran) {
+          tran.token = item.token
+          tmp.push(tran)
+          this.setState({transactions: tmp.sort((a,b)=>{return (a.blockNumber < b.blockNumber ? 1 : -1)})})
+        }.bind(this))
+      })
+
     } else {
-        this.setState({transactions: {
+        tmp.push({
           blockNumber : null,
           to : null,
-          value : []
-        }})
+          token : null
+        })
+        this.setState({transactions: tmp})
       }
     }
 

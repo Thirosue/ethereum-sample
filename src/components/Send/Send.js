@@ -26,15 +26,14 @@ class Send extends Component {
       window.alert('send complete!')
 
       var tran = new Array()
-      if(this.state.transactions) {
-        tran = this.state.transactions
+      if(sessionStorage.getItem('transactions')) {
+        tran = JSON.parse(sessionStorage.getItem('transactions'))
       }
       tran.push({
         hash : txHash,
         token : this.sendAmountInput.value
       })
-      this.setState({transactions: tran})
-      sessionStorage.setItem('transactions', JSON.stringify(this.state.transactions))
+      sessionStorage.setItem('transactions', JSON.stringify(tran))
 
     }.bind(this)
     ).catch(function(e) {

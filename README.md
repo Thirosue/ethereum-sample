@@ -2,7 +2,7 @@
 
 ## ethereum setup
 
-+ init
++ init private net work
 
 ```
 geth --datadir ./private init ./genesis.json

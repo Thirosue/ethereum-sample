@@ -20,7 +20,7 @@ class TransactionListContainer extends Component {
 
     if(sessionStorage.getItem('transactions')) {
       var tlist = JSON.parse(sessionStorage.getItem('transactions'))
-      var current = tlist.slice(tlist.length-3, tlist.length)
+      var current = 3<tlist.length ? tlist.slice(tlist.length-3, tlist.length):tlist.slice(0, tlist.length)
 
       current.forEach((item,index,ar) => {
         this.props.web3.eth.getTransaction(item.hash, function(err, tran) {

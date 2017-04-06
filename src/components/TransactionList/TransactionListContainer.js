@@ -25,6 +25,7 @@ class TransactionListContainer extends Component {
       current.forEach((item,index,ar) => {
         this.props.web3.eth.getTransaction(item.hash, function(err, tran) {
           tran.token = item.token
+          tran.to = item.to
           tmp.push(tran)
           this.setState({transactions: tmp.sort((a,b)=>{return (a.blockNumber < b.blockNumber ? 1 : -1)})})
         }.bind(this))

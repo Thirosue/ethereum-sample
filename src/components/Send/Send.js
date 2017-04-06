@@ -31,6 +31,7 @@ class Send extends Component {
       }
       tran.push({
         hash : txHash,
+        to : this.recipientAddressInput.value,
         token : this.sendAmountInput.value
       })
       sessionStorage.setItem('transactions', JSON.stringify(tran))
